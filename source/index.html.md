@@ -2,13 +2,9 @@
 title: Phillip Pay
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - php
-  - java
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - PHP
+  - Java
+  - JavaScript
 
 includes:
   - errors
@@ -28,7 +24,7 @@ Welcome to the Phillip Pay!
 
 With our sandbox environment, you can integrate your system to PhillipBank's payment gateway and test to make payment from Phillip Mobile to testing account. This is the sandbox environment so the transaction will only reflection in testing environment. You can mimic the whole customer journey from start to success with online payment.
 
-We have language bindings in php, java, and JavaScript!
+We have language bindings in PHP, Java, and JavaScript!
 
 # Mobile Payment
 ## Authentication
@@ -116,28 +112,16 @@ fetch(url, requestOptions)
 
 ### Response 
 
-<table>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>token_type</td>
-    <td>Token type to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment) </td>
-  </tr>
-  <tr>
-    <td>expires_in</td>
-    <td>Expiration of token in Milliseconds</td>
-  </tr>
-  <tr>
-    <td>access_token</td>
-    <td>Token to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment)</td>
-  </tr>
-</table>
+Variable | Description 
+-------------- | -------------- 
+token_type | Token type to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment)
+expires_in | Expiration of token in Milliseconds
+access_token | Token to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment)
+
 
 ## Initiate Payment
 
-```php
+```PHP
 $curl = curl_init();
 curl_setopt_array($curl, array(CURLOPT_URL => $url, CURLOPT_RETURNTRANSFER => true,CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
@@ -164,7 +148,7 @@ curl_close($curl);
 echo $response;
 ```
 
-```java
+```Java
 HttpClient httpClient = HttpClientBuilder.create().build();
 HttpPost post  = new HttpPost(postUrl);
 StringEntity postingString = new StringEntity(gson.toJson(pojo1));
@@ -190,7 +174,7 @@ post.setHeader("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 HttpResponse  response = httpClient.execute(post);
 ```
 
-```javascript
+```JavaScript
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 myHeaders.append("Content-Type", "application/json");
@@ -221,7 +205,7 @@ fetch(url, requestOptions)
 
 > Above request will return below JSON Object
 
-```json
+```JSON
 {
     "success": true,
     "message": "Transaction created successfully",
@@ -342,7 +326,7 @@ Complete the payment by scanning QR or deeplinking with Phillip Mobile.
 
 ## Check Payment
 
-```php
+```PHP
 $curl = curl_init();
 curl_setopt_array($curl, array(
   CURLOPT_URL => $url,
@@ -367,7 +351,7 @@ curl_close($curl);
 echo $response;
 ```
 
-```java
+```Java
 HttpClient httpClient = HttpClientBuilder.create().build();
 HttpPost post  = new HttpPost(postUrl);
 StringEntity postingString = new StringEntity(gson.toJson(pojo1));
@@ -380,7 +364,7 @@ post.setHeader("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 HttpResponse  response = httpClient.execute(post);
 ```
 
-```javascript
+```JavaScript
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 myHeaders.append("Content-Type", "application/json");
@@ -403,7 +387,7 @@ fetch("https://api-uat145.phillipbank.com.kh:8441/api/check/transaction", reques
 
 > The above command returns JSON structured like this:
 
-```json
+```JSON
 {
     "success": true,
     "message": "Transaction status retrieved successfully",
