@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;php&quot;,&quot;java&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;PHP&quot;,&quot;Java&quot;,&quot;JavaScript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -305,9 +305,9 @@
     <div class="toc-wrapper">
       <img src="images/logo-7f560041.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="php">php</a>
-              <a href="#" data-language-name="java">java</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="PHP">PHP</a>
+              <a href="#" data-language-name="Java">Java</a>
+              <a href="#" data-language-name="JavaScript">JavaScript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -341,10 +341,6 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -354,7 +350,7 @@
 
 <p>With our sandbox environment, you can integrate your system to PhillipBank&#39;s payment gateway and test to make payment from Phillip Mobile to testing account. This is the sandbox environment so the transaction will only reflection in testing environment. You can mimic the whole customer journey from start to success with online payment.</p>
 
-<p>We have language bindings in php, java, and JavaScript!</p>
+<p>We have language bindings in PHP, Java, and JavaScript!</p>
 <h1 id='mobile-payment'>Mobile Payment</h1><h2 id='authentication'>Authentication</h2>
 <blockquote>
 <p>To generate the access token, use this code:</p>
@@ -428,27 +424,28 @@
   </tr>
 </table>
 <h3 id='response'>Response</h3>
-<table>
-  <tr>
-    <th>Variable</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>token_type</td>
-    <td>Token type to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment) </td>
-  </tr>
-  <tr>
-    <td>expires_in</td>
-    <td>Expiration of token in Milliseconds</td>
-  </tr>
-  <tr>
-    <td>access_token</td>
-    <td>Token to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment)</td>
-  </tr>
-</table>
-<h2 id='initiate-payment'>Initiate Payment</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="nv">$url</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span><span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span><span class="s1">'{
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token_type</td>
+<td>Token type to authorize in request header to <a href="#initiate-payment">Initiate</a> and <a href="#check-payment">Check</a></td>
+</tr>
+<tr>
+<td>expires_in</td>
+<td>Expiration of token in Milliseconds</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>Token to authorize in request header to <a href="#initiate-payment">Initiate</a> and <a href="#check-payment">Check</a></td>
+</tr>
+</tbody></table>
+<h2 id='initiate-payment'>Initiate Payment</h2><div class="highlight"><pre class="highlight plaintext"><code>$curl = curl_init();
+curl_setopt_array($curl, array(CURLOPT_URL =&gt; $url, CURLOPT_RETURNTRANSFER =&gt; true,CURLOPT_CUSTOMREQUEST =&gt; 'POST',
+  CURLOPT_POSTFIELDS =&gt;'{
     "partner_id": "sanbox",
     "merchant_id": "12345",
     "merchant_name": "Sandbox Merchant",
@@ -465,15 +462,15 @@
     "country_code": "KH",
     "success_redirect": "https://www.example.com/redirect_payment_sucess",
     "fail_redirect": "https://example.com/redirect_payment_fail"
-}'</span><span class="p">,</span>
-  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'Authorization: Bearer eyAI14!J2aXrpQ21AO==='</span><span class="p">,</span><span class="s1">'Content-Type: application/json'</span><span class="p">)));</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpClient</span> <span class="n">httpClient</span> <span class="o">=</span> <span class="nc">HttpClientBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
-<span class="nc">HttpPost</span> <span class="n">post</span>  <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpPost</span><span class="o">(</span><span class="n">postUrl</span><span class="o">);</span>
-<span class="nc">StringEntity</span> <span class="n">postingString</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringEntity</span><span class="o">(</span><span class="n">gson</span><span class="o">.</span><span class="na">toJson</span><span class="o">(</span><span class="n">pojo1</span><span class="o">));</span>
-<span class="n">post</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="s">"{
+}',
+  CURLOPT_HTTPHEADER =&gt; array('Authorization: Bearer eyAI14!J2aXrpQ21AO===','Content-Type: application/json')));
+$response = curl_exec($curl);
+curl_close($curl);
+echo $response;
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>HttpClient httpClient = HttpClientBuilder.create().build();
+HttpPost post  = new HttpPost(postUrl);
+StringEntity postingString = new StringEntity(gson.toJson(pojo1));
+post.setEntity("{
   \"partner_id\": \"sanbox\",
   \"merchant_id\": \"12345\",
   \"merchant_name\": \"Sandbox Merchant\",
@@ -489,49 +486,49 @@
   \"fee\": 0.0,
   \"country_code\": \"KH\",
   \"success_redirect\": \"https://www.example.com/redirect_payment_sucess\",
-  \"fail_redirect\": \"https://example.com/redirect_payment_fail\"\r\n}"</span><span class="o">);</span>
-<span class="n">post</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Content-type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
-<span class="n">post</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Bearer eyAI14!J2aXrpQ21AO==="</span><span class="o">);</span>
-<span class="nc">HttpResponse</span>  <span class="n">response</span> <span class="o">=</span> <span class="n">httpClient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">post</span><span class="o">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
-<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Bearer eyAI14!J2aXrpQ21AO===</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">raw</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">partner_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sanbox</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">merchant_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">merchant_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sandbox Merchant</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">merchant_city</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Phnom Penh</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">merchant_category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">5814</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">merchant_rdn</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">example.com</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">012345678</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">payload</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Item1, Item2,</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">txn_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INV_82091-9001</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">label</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Invoice No</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">currency</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USD</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mf">10.75</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">fee</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">country_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">KH</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">success_redirect</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.example.com/redirect_payment_sucess</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">fail_redirect</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://example.com/redirect_payment_fail</span><span class="dl">"</span>
-<span class="p">});</span>
-<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span> <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span> <span class="na">body</span><span class="p">:</span> <span class="nx">raw</span> <span class="p">};</span>
-<span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+  \"fail_redirect\": \"https://example.com/redirect_payment_fail\"\r\n}");
+post.setHeader("Content-type", "application/json");
+post.setHeader("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
+HttpResponse  response = httpClient.execute(post);
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({
+  "partner_id": "sanbox",
+  "merchant_id": "12345",
+  "merchant_name": "Sandbox Merchant",
+  "merchant_city": "Phnom Penh",
+  "merchant_category": "5814",
+  "merchant_rdn": "example.com",
+  "phone": "012345678",
+  "payload": "Item1, Item2,",
+  "txn_id": "INV_82091-9001",
+  "label": "Invoice No",
+  "currency": "USD",
+  "amount": 10.75,
+  "fee": 0,
+  "country_code": "KH",
+  "success_redirect": "https://www.example.com/redirect_payment_sucess",
+  "fail_redirect": "https://example.com/redirect_payment_fail"
+});
+var requestOptions = { method: 'POST', headers: myHeaders, body: raw };
+fetch(url, requestOptions)
+  .then(response =&gt; response.text())
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; console.log('error', error));
 </code></pre></div>
 <blockquote>
 <p>Above request will return below JSON Object</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="err">    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-</span><span class="err">    </span><span class="nl">"message"</span><span class="p">:</span><span class="err"> </span><span class="s2">"Transaction created successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"txn_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INV_82091-9002"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://api-uat145.phillipbank.com.kh:8441/pay?token=123"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "success": true,
+    "message": "Transaction created successfully",
+    "data": {
+        "txn_id": "INV_82091-9002",
+        "url":"https://api-uat145.phillipbank.com.kh:8441/pay?token=123"
+    }
+}
+</code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api-uat145.phillipbank.com.kh:8441/oauth/token</code></p>
 <h3 id='request-header'>Request Header</h3>
 <table><thead>
@@ -641,68 +638,68 @@ This endpoint will create a request for payment from customer at Phillip Pay sys
 
 Complete the payment by scanning QR or deeplinking with Phillip Mobile.
 </aside>
-<h2 id='check-payment'>Check Payment</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="nv">$url</span><span class="p">,</span>
-  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
-  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="no">CURLOPT_FOLLOWLOCATION</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
-  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s1">'POST'</span><span class="p">,</span>
-  <span class="no">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span><span class="s1">'{
+<h2 id='check-payment'>Check Payment</h2><div class="highlight"><pre class="highlight plaintext"><code>$curl = curl_init();
+curl_setopt_array($curl, array(
+  CURLOPT_URL =&gt; $url,
+  CURLOPT_RETURNTRANSFER =&gt; true,
+  CURLOPT_ENCODING =&gt; '',
+  CURLOPT_MAXREDIRS =&gt; 10,
+  CURLOPT_TIMEOUT =&gt; 0,
+  CURLOPT_FOLLOWLOCATION =&gt; true,
+  CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST =&gt; 'POST',
+  CURLOPT_POSTFIELDS =&gt;'{
     "merchant_id": "12345",
     "txn_id": "INV_82091-9001"
-    }'</span><span class="p">,</span>
-  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">'Authorization: Bearer eyAI14!J2aXrpQ21AO==='</span><span class="p">,</span>
-    <span class="s1">'Content-Type: application/json'</span>
-  <span class="p">),</span>
-<span class="p">));</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
-</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">HttpClient</span> <span class="n">httpClient</span> <span class="o">=</span> <span class="nc">HttpClientBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
-<span class="nc">HttpPost</span> <span class="n">post</span>  <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpPost</span><span class="o">(</span><span class="n">postUrl</span><span class="o">);</span>
-<span class="nc">StringEntity</span> <span class="n">postingString</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringEntity</span><span class="o">(</span><span class="n">gson</span><span class="o">.</span><span class="na">toJson</span><span class="o">(</span><span class="n">pojo1</span><span class="o">));</span>
-<span class="n">post</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="s">"{
+    }',
+  CURLOPT_HTTPHEADER =&gt; array(
+    'Authorization: Bearer eyAI14!J2aXrpQ21AO===',
+    'Content-Type: application/json'
+  ),
+));
+$response = curl_exec($curl);
+curl_close($curl);
+echo $response;
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>HttpClient httpClient = HttpClientBuilder.create().build();
+HttpPost post  = new HttpPost(postUrl);
+StringEntity postingString = new StringEntity(gson.toJson(pojo1));
+post.setEntity("{
   \"merchant_id\": \"12345\",
   \"txn_id\": \"INV_82091-9001\"
-  }"</span><span class="o">);</span>
-<span class="n">post</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Content-type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">);</span>
-<span class="n">post</span><span class="o">.</span><span class="na">setHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Bearer eyAI14!J2aXrpQ21AO==="</span><span class="o">);</span>
-<span class="nc">HttpResponse</span>  <span class="n">response</span> <span class="o">=</span> <span class="n">httpClient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">post</span><span class="o">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
-<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Bearer eyAI14!J2aXrpQ21AO===</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+  }");
+post.setHeader("Content-type", "application/json");
+post.setHeader("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
+HttpResponse  response = httpClient.execute(post);
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
+myHeaders.append("Content-Type", "application/json");
 
-<span class="kd">var</span> <span class="nx">raw</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">merchant_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">txn_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INV_82091-9001</span><span class="dl">"</span>
-<span class="p">});</span>
-<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
-  <span class="na">body</span><span class="p">:</span> <span class="nx">raw</span><span class="p">,</span>
-<span class="p">};</span>
+var raw = JSON.stringify({
+  "merchant_id": "12345",
+  "txn_id": "INV_82091-9001"
+});
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+};
 
-<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api-uat145.phillipbank.com.kh:8441/api/check/transaction</span><span class="dl">"</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
-  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+fetch("https://api-uat145.phillipbank.com.kh:8441/api/check/transaction", requestOptions)
+  .then(response =&gt; response.text())
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; console.log('error', error));
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction status retrieved successfully"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"txn_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PENDING"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "success": true,
+    "message": "Transaction status retrieved successfully",
+    "data": {
+        "txn_status": "PENDING"
+    }
+}
+</code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api-uat145.phillipbank.com.kh:8441/api/check/transaction</code></p>
 <h3 id='request-body-3'>Request Body</h3>
 <table>
@@ -764,9 +761,9 @@ Complete the payment by scanning QR or deeplinking with Phillip Mobile.
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="php">php</a>
-                <a href="#" data-language-name="java">java</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="PHP">PHP</a>
+                <a href="#" data-language-name="Java">Java</a>
+                <a href="#" data-language-name="JavaScript">JavaScript</a>
           </div>
       </div>
     </div>
