@@ -121,7 +121,7 @@ access_token | Token to authorize in request header to [Initiate](#initiate-paym
 
 ## Initiate Payment
 
-```PHP
+```php
 $curl = curl_init();
 curl_setopt_array($curl, array(CURLOPT_URL => $url, CURLOPT_RETURNTRANSFER => true,CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
@@ -148,7 +148,7 @@ curl_close($curl);
 echo $response;
 ```
 
-```Java
+```java
 HttpClient httpClient = HttpClientBuilder.create().build();
 HttpPost post  = new HttpPost(postUrl);
 StringEntity postingString = new StringEntity(gson.toJson(pojo1));
@@ -174,7 +174,7 @@ post.setHeader("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 HttpResponse  response = httpClient.execute(post);
 ```
 
-```JavaScript
+```javascript
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 myHeaders.append("Content-Type", "application/json");
@@ -205,7 +205,7 @@ fetch(url, requestOptions)
 
 > Above request will return below JSON Object
 
-```JSON
+```json
 {
     "success": true,
     "message": "Transaction created successfully",
@@ -326,7 +326,7 @@ Complete the payment by scanning QR or deeplinking with Phillip Mobile.
 
 ## Check Payment
 
-```PHP
+```php
 $curl = curl_init();
 curl_setopt_array($curl, array(
   CURLOPT_URL => $url,
@@ -351,7 +351,7 @@ curl_close($curl);
 echo $response;
 ```
 
-```Java
+```java
 HttpClient httpClient = HttpClientBuilder.create().build();
 HttpPost post  = new HttpPost(postUrl);
 StringEntity postingString = new StringEntity(gson.toJson(pojo1));
@@ -364,7 +364,7 @@ post.setHeader("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 HttpResponse  response = httpClient.execute(post);
 ```
 
-```JavaScript
+```javascript
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer eyAI14!J2aXrpQ21AO===");
 myHeaders.append("Content-Type", "application/json");
@@ -387,7 +387,7 @@ fetch("https://api-uat145.phillipbank.com.kh:8441/api/check/transaction", reques
 
 > The above command returns JSON structured like this:
 
-```JSON
+```json
 {
     "success": true,
     "message": "Transaction status retrieved successfully",
