@@ -115,7 +115,7 @@ fetch(url, requestOptions)
 Variable | Description 
 -------------- | -------------- 
 token_type | Token type to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment)
-expires_in | Expiration of token in Milliseconds
+expires_in | Expiration of token in milliseconds
 access_token | Token to authorize in request header to [Initiate](#initiate-payment) and [Check](#check-payment)
 
 
@@ -251,7 +251,7 @@ Authorization | Yes | Authorized from [Authenticate](#authentication)
   </tr>
   <tr>
     <td>merchant_category</td>
-    <td>Merchant Category standard EMV</td>
+    <td>Merchant category code by following EMV standard</td>
   </tr>
   <tr>
     <td>merchant_rdn</td>
@@ -267,7 +267,7 @@ Authorization | Yes | Authorized from [Authenticate](#authentication)
   </tr>
   <tr>
     <td>txn_id</td>
-    <td>The Unique transaction ID  between Partner and PhillipBank.</td>
+    <td>The unique transaction ID between Partner and PhillipBank.</td>
   </tr>
   <tr>
     <td>label</td>
@@ -279,7 +279,7 @@ Authorization | Yes | Authorized from [Authenticate](#authentication)
   </tr>
   <tr>
     <td>amount</td>
-    <td>Payment Amount</td>
+    <td>Payment amount</td>
   </tr>
   <tr>
     <td>fee</td>
@@ -291,11 +291,11 @@ Authorization | Yes | Authorized from [Authenticate](#authentication)
   </tr>
   <tr>
     <td>success_redirect</td>
-    <td>Redirect URL upon payment success at PLB</td>
+    <td>Redirect URL upon payment success at PhillipBank</td>
   </tr>
   <tr>
     <td>fail_redirect</td>
-    <td>Redirect URL upon payment failed at PLB</td>
+    <td>Redirect URL upon payment failed at PhillipBank</td>
   </tr>
 </table>
 
@@ -414,7 +414,7 @@ fetch("https://api-uat145.phillipbank.com.kh:8441/api/check/transaction", reques
   </tr>
   <tr>
     <td>txn_id</td>
-    <td>The Transaction ID  between Partner and PhillipBank.</td>
+    <td>The transaction ID  between Partner and PhillipBank.</td>
   </tr>
 </table>
 
