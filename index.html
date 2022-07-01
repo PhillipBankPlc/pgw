@@ -529,7 +529,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://api-uat145.phillipbank.com.kh:8441/oauth/token</code></p>
+<p><code>POST https://api-uat145.phillipbank.com.kh:8441/api/init/transaction</code></p>
 <h3 id='request-header'>Request Header</h3>
 <table><thead>
 <tr>
@@ -725,6 +725,10 @@ Complete the payment by scanning QR or deeplinking with Phillip Mobile.
   <tr>
     <td>txn_status</td>
     <td>Status of payment, it can be SUCCESS, PENDING, and FAILED.</td>
+  </tr>
+  <tr>
+    <td>txn_ref_no</td>
+    <td>PhillipBank transaction reference number, only applicable when txn_status is SUCCESS.</td>
   </tr>
 </table>
 <h1 id='card-payment'>Card Payment</h1>
