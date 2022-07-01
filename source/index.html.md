@@ -219,7 +219,7 @@ fetch(url, requestOptions)
 
 ### HTTP Request
 
-`POST https://api-uat145.phillipbank.com.kh:8441/oauth/token`
+`POST https://api-uat145.phillipbank.com.kh:8441/api/init/transaction`
 
 ### Request Header
 
@@ -427,6 +427,10 @@ fetch("https://api-uat145.phillipbank.com.kh:8441/api/check/transaction", reques
   <tr>
     <td>txn_status</td>
     <td>Status of payment, it can be SUCCESS, PENDING, and FAILED.</td>
+  </tr>
+  <tr>
+    <td>txn_ref_no</td>
+    <td>PhillipBank transaction reference number, only applicable when txn_status is SUCCESS.</td>
   </tr>
 </table>
 
