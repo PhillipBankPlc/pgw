@@ -2,9 +2,9 @@
 title: Phillip Pay
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - PHP
-  - Java
-  - JavaScript
+  - php
+  - java
+  - javascript
 
 includes:
   - errors
